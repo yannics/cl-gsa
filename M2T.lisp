@@ -54,3 +54,8 @@
     (format t "~:{~&~A~12T~A~28T~A~44T~A~}" res)))
 
 ;;----------------------------END-----------------------------
+
+;; ---> loading quantizers ...
+(load (merge-pathnames (make-pathname :directory '(:relative "opt") :name "quantizers" :type "lisp") (asdf:component-pathname (asdf:find-system "cl-gsa"))))
+;; ---> loading studies ...
+(load (merge-pathnames (make-pathname :directory '(:relative "opt") :name "studies" :type "lisp") (asdf:component-pathname (asdf:find-system "cl-gsa"))))

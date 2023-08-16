@@ -130,10 +130,6 @@
 	     i
 	     (sort-nearest i)))))
 
-(defun count-item-in-list (lst &optional r)
-  (dolist (e (remove-duplicates lst :test #'equalp) r)
-    (push (list (count e lst :test #'equalp) e) r)))
-
 (defun sort-n (lst)
   (flat (loop for i in (group-adj (sort (count-item-in-list lst) #'> :key #'car) #'car)
        collect (mapcar #'cadr (sort i #'< :key #'car)))))

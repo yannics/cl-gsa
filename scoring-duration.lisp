@@ -39,7 +39,8 @@ The result retains only the exponents."
 			      (loop for a in df collect (complete-list a n)))))))
  
 (defun scoring-duration (durations-list)
-  (let ((fct (pgcd (remove-duplicates durations-list))))
-    (loop for i in durations-list collect (/ i fct))))
+  (if (member 1 durations-list) durations-list
+      (let ((fct (pgcd (remove-duplicates durations-list))))
+	(loop for i in durations-list collect (/ i fct)))))
 
 ;;----------------------------END-----------------------------

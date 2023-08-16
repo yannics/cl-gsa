@@ -7,7 +7,7 @@
   :author "Yann Ics <by.cmsc@gmail.com>"
   :maintainer "Yann Ics <by.cmsc@gmail.com>"
   :licence "GNU GPL"
-  :version "1.5"
+  :version "1.6"
   :homepage "https://github.com/yannics/cl-gsa"
   :description "https://www.overleaf.com/read/sjhfhthgkgdj"  
   :serial t
