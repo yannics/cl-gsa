@@ -9,7 +9,7 @@
   :licence "GNU GPL"
   :version "1.6"
   :homepage "https://github.com/yannics/cl-gsa"
-  :description "https://www.overleaf.com/read/sjhfhthgkgdj"  
+  :description "https://github.com/yannics/GSA/blob/master/gsa.pdf"  
   :serial t
   :components
   (
