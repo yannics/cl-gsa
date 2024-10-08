@@ -2,7 +2,9 @@
 ;; -------------------------
 
 (ignore-errors (require 'cl-cycle))
-(unless (find-package :cl-cycle) (warn "Package CL-CYCLE not installed!"))
+(if (find-package :cl-cycle)
+    (format t "loaded: CL-CYCLE~%")
+    (warn "Package CL-CYCLE not installed!"))
 (let ((ly (ignore-errors (with-output-to-string (stream) (UIOP:run-program (format nil "sh -c 'which lilypond'") :output stream))))
       (c-ly (ignore-errors (with-output-to-string (stream) (UIOP:run-program (format nil "sh -c 'which convert-ly'") :output stream)))))
   (defvar *lilypond* (remove #\NewLine ly))

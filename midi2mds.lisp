@@ -236,5 +236,26 @@
 		 collect (cons j (flat i)))))
 	(warn "Context not recognized!"))))
   
+;;------------------------------------------------------------ 
+;;                                                  SOME UTILS
+
+(defun all-midi-notes (mds) ;; of the score
+  (sort (remove-duplicates (loop for i in mds append (mapcar #'abs (cadr i)))) #'<))
+
+(defun mid2deg (mid-lst &optional (tune 0))
+  (let ((tmp (loop for x in mid-lst collect (mod (+ tune x) 12)))) 
+    (sort (remove-duplicates tmp) #'<)))
+
+(defun histogram (mds &optional opt) ;; opt = :abs (absolute durations) or by default opt = :diff (differential durations) 
+  (let*
+      ((notes (all-midi-notes mds))
+       (tmp (if (eq opt :abs)
+		(loop for i in mds collect (list (car i) (mapcar #'abs (cadr i))))
+		mds))
+       (dur (loop for n in notes collect (loop for ev in tmp when (member n (cadr ev)) sum (car ev))))
+       (hist (mapcar #'reverse (count-item-in-list
+	      (loop for i in mds append (cadr i))))))
+    (loop for i in notes for j in dur collect (list i (cadr (assoc i hist)) j))))
+
 ;;----------------------------END-----------------------------
 
